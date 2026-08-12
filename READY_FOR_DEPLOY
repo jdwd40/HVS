@@ -1,0 +1,14 @@
+Hermes Video Studio — implementation and local verification complete.
+
+Verified 2026-08-12 on this host:
+- npm install: clean (220 packages)
+- npm test: 22/22 passed (vitest: api, pipeline, media suites)
+- npm run build: vite production build OK (dist/)
+- npm start: server on :4174, health endpoint OK
+- npm run smoke: 18/18 checks passed (full AUTO production to completion,
+  playable MP4 media served, queue/history/control endpoints)
+- Browser UI smoke: console renders; MANUAL review override + OK verified live
+- Persistence: state survived server restart (SQLite)
+
+Run: npm install && npm run build && npm start  →  http://localhost:4174
+Nothing committed, pushed, deployed, or changed on the host.

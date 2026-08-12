@@ -1,0 +1,29 @@
+# Hermes Video Studio — systemd user service (template)
+# Install (user service, no root):
+#   mkdir -p ~/.config/systemd/user
+#   cp deploy/hvs.service ~/.config/systemd/user/hvs.service
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now hvs
+# Manage:
+#   systemctl --user start|stop|restart|status hvs
+#   journalctl --user -u hvs -f
+
+[Unit]
+Description=Hermes Video Studio (local AI video production console, mock providers)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/work/HVS
+ExecStart=/home/jd/.local/bin/node server/index.js
+Restart=on-failure
+RestartSec=3
+Environment=NODE_ENV=production
+Environment=PORT=4174
+# Optional overrides:
+# Environment=HVS_DATA_DIR=%h/work/HVS/data
+# Environment=HVS_MEDIA_DIR=%h/work/HVS/media
+# Environment=HVS_DB_PATH=%h/work/HVS/data/hvs.db
+
+[Install]
+WantedBy=default.target
