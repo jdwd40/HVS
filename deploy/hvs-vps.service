@@ -1,0 +1,17 @@
+# Hermes Video Studio — VPS user service
+# Installed by the deployment operator under ~/.config/systemd/user/hvs.service
+[Unit]
+Description=Hermes Video Studio (local AI video production console, mock providers)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/autobuild-deploy/apps/hvs
+ExecStart=/usr/bin/node server/index.js
+Restart=on-failure
+RestartSec=3
+Environment=NODE_ENV=production
+Environment=PORT=4174
+
+[Install]
+WantedBy=default.target
