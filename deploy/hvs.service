@@ -15,7 +15,7 @@ After=network.target
 [Service]
 Type=simple
 WorkingDirectory=%h/work/HVS
-ExecStart=/home/jd/.local/bin/node server/index.js
+ExecStart=/usr/bin/node server/index.js
 Restart=on-failure
 RestartSec=3
 Environment=NODE_ENV=production
